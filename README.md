@@ -1,24 +1,11 @@
-# README
+# Readme
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicación que permite optimizar el tiempo de espera presencial y mejorar el distanciamiento social en negocios con alto flujo de usuarios.
 
-Things you may want to cover:
+### Historias de usuario
 
-* Ruby version
+https://www.notion.so/Wait-4-It-No-m-s-filas-d7648e39ba504d909df79323c8a75986
 
-* System dependencies
+### Modelo DDBB
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://drive.google.com/file/d/1Gkzj1sN0UncM1dNtzQ84eewmGbXNRujz/view?usp=sharing
