@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  customer: one
+  ticket_number: 1
+  priority: false
+  state: 
+
+two:
+  company: two
+  customer: two
+  ticket_number: 1
+  priority: false
+  state: 
