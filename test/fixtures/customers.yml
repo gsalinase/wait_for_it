@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  phone: MyText
+  email: MyString
+  role: 1
+  birthday: 2020-08-16
+  critical_role: false
+
+two:
+  name: MyString
+  phone: MyText
+  email: MyString
+  role: 1
+  birthday: 2020-08-16
+  critical_role: false
