@@ -17,3 +17,16 @@
     critical_role: [true, false].sample
   )
 end
+
+# Company
+5.times do
+  Company.create(
+    name: Faker::Company.name,
+    industry: Faker::Company.industry,
+    address: Faker::Address.full_address,
+    phone: Faker::PhoneNumber.cell_phone_in_e164,
+    email: Faker::Internet.email,
+  )
+end
+
+# Tickets
