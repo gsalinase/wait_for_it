@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_010053) do
+ActiveRecord::Schema.define(version: 2020_08_17_014139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.text "industry"
+    t.text "address"
+    t.text "phone"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "company_configurations", force: :cascade do |t|
+    t.time "work_start"
+    t.time "work_end"
+    t.jsonb "working_day"
+    t.jsonb "service_type"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_configurations_on_company_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -26,4 +47,5 @@ ActiveRecord::Schema.define(version: 2020_08_17_010053) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "company_configurations", "companies"
 end
