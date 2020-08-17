@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work_start: 2020-08-16 21:41:39
+  work_end: 2020-08-16 21:41:39
+  working_day: 
+  service_type: 
+  company: one
+
+two:
+  work_start: 2020-08-16 21:41:39
+  work_end: 2020-08-16 21:41:39
+  working_day: 
+  service_type: 
+  company: two
