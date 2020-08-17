@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Clean Seed
+Company.delete_all
+Customer.delete_all
+Ticket.delete_all
+
 # Users
 5.times do
   Customer.create(
@@ -30,3 +35,12 @@ end
 end
 
 # Tickets
+5.times do |i|
+  Ticket.create(
+    company_id: rand(1..5),
+    customer_id: rand(1..5),
+    ticket_number: i,
+    priority: [true, false].sample,
+    state: rand(1..2),
+  )
+end
