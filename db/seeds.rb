@@ -8,12 +8,12 @@
 
 # Clean Seed
 Company.delete_all
-Customer.delete_all
+User.delete_all
 Ticket.delete_all
 
 # Users
 5.times do
-  Customer.create(
+  User.create(
     name: Faker::Name.name,
     phone: Faker::PhoneNumber.cell_phone_in_e164,
     email: Faker::Internet.email,
@@ -38,7 +38,7 @@ end
 5.times do |i|
   Ticket.create(
     company_id: rand(1..5),
-    customer_id: rand(1..5),
+    user_id: rand(1..5),
     ticket_number: i,
     priority: [true, false].sample,
     state: rand(1..2),

@@ -3,13 +3,7 @@
 one:
   company: one
   user: one
-  ticket_number: 1
-  priority: false
-  state: 1
 
 two:
   company: two
   user: two
-  ticket_number: 1
-  priority: false
-  state: 1
