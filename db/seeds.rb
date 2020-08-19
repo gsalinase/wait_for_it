@@ -17,7 +17,7 @@ Ticket.delete_all
     name: Faker::Name.name,
     phone: Faker::PhoneNumber.cell_phone_in_e164,
     email: Faker::Internet.email,
-    customer_type: rand(1..2),
+    role: rand(1..2),
     birthday: Faker::Date.between_except(from: 100.year.ago, to: 18.year.from_now, excepted: Date.today),
     critical_role: [true, false].sample
   )
