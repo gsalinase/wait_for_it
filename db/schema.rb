@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_020611) do
+ActiveRecord::Schema.define(version: 2020_08_19_014725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,30 +36,41 @@ ActiveRecord::Schema.define(version: 2020_08_17_020611) do
     t.index ["company_id"], name: "index_company_configurations_on_company_id"
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "name"
-    t.text "phone"
-    t.string "email"
-    t.integer "customer_type"
-    t.date "birthday"
-    t.boolean "critical_role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tickets", force: :cascade do |t|
     t.bigint "company_id"
-    t.bigint "customer_id"
+    t.bigint "user_id"
     t.integer "ticket_number"
     t.boolean "priority"
     t.integer "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_tickets_on_company_id"
-    t.index ["customer_id"], name: "index_tickets_on_customer_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
+
+  create_table "user_companies", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_user_companies_on_company_id"
+    t.index ["user_id"], name: "index_user_companies_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.text "phone"
+    t.string "email"
+    t.integer "role"
+    t.date "birthday"
+    t.boolean "critical_role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "company_configurations", "companies"
   add_foreign_key "tickets", "companies"
-  add_foreign_key "tickets", "customers"
+  add_foreign_key "tickets", "users"
+  add_foreign_key "user_companies", "companies"
+  add_foreign_key "user_companies", "users"
 end
