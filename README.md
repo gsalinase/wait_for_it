@@ -9,3 +9,7 @@ https://www.notion.so/Wait-4-It-No-m-s-filas-d7648e39ba504d909df79323c8a75986
 ### Modelo DDBB
 
 https://drive.google.com/file/d/1Gkzj1sN0UncM1dNtzQ84eewmGbXNRujz/view?usp=sharing
+
+### Front End Vue JS
+
+https://github.com/gsalinase/front_wait_for_it
