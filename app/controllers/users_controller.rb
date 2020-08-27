@@ -38,6 +38,16 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # TODO: agregar devise sanitizier
+  def update_password
+    @user = current_user
+    if @user.update!(password_params)
+      render json: { status: :ok }
+    else
+      render json: { status: :error }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -47,5 +57,10 @@ class UsersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:name, :phone, :email, :role, :birthday, :critical_role)
+    end
+
+    def password_params
+      # NOTE: Using `strong_parameters` gem
+      params.require(:user).permit(:password, :password_confirmation)
     end
 end
