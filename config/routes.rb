@@ -4,15 +4,14 @@ Rails.application.routes.draw do
               path_names: {
                 sign_in: 'login',
                 sign_out: 'logout',
-                registration: 'signup'
+                registration: 'signup',
               },
               controllers: {
                 sessions: 'users/sessions',
                 registrations: 'users/registrations'
               }
-  devise_scope :user do
-    post '/company/signup', to: 'users/registrations#create'
-  end
+
+  put '/update_password', to: 'users#update_password'
   resources :companies
   resources :tickets
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
