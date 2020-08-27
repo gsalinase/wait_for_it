@@ -18,6 +18,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
+      @company.create_user_company(params[:user_id]) if params[:user_id].present?
       render json: @company, status: :created, location: @company
     else
       render json: @company.errors, status: :unprocessable_entity
