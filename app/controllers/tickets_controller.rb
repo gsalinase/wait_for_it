@@ -3,7 +3,11 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :update, :destroy]
 
   def index
-    @tickets = Ticket.all
+    if params[:user_id]
+      @tickets = Ticket.by_user(params[:user_id])
+    else
+      @tickets = Ticket.all
+    end
 
     render json: @tickets
   end
