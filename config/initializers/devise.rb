@@ -271,7 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'],
+                  strategy_class: OmniAuth::Strategies::Facebook
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -314,10 +315,10 @@ Devise.setup do |config|
     #  You need to tell which requests will dispatch tokens for the user that has been previously
     #  authenticated (usually through some other warden strategy, such as one requiring username and email parameters).
     #  To configure it, you can add the the request path to dispath_requests
-    jwt.dispatch_requests = [['POST', %r{^users/sign_in$}]]
+    jwt.dispatch_requests = [['POST', %r{^users/login$}]]
 
     #  You need to tell which requests will revoke incoming JWT tokens, and you can add the the request path to revocation_requests
-    jwt.revocation_requests = [['DELETE', %r{^users/sign_out$}]]
+    jwt.revocation_requests = [['DELETE', %r{^users/signout$}]]
     jwt.expiration_time = 1.day.to_i
   end
   config.remember_for = 1.day.to_i
