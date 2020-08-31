@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :jwt_denylists
   accepts_nested_attributes_for :companies
 
+  before_create :add_jti
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -28,5 +30,9 @@ class User < ApplicationRecord
       # uncomment the line below to skip the confirmation emails.
       # user.skip_confirmation!
     end
+  end
+
+  def add_jti
+    self.jti ||= SecureRandom.uuid
   end
 end
