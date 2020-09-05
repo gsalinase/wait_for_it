@@ -9,12 +9,18 @@ class TicketsController < ApplicationController
       @tickets = Ticket.all
     end
 
-    render json: @tickets
+    render json: {
+      tickets: @tickets,
+      companies: @tickets.map{ |ticket| ticket.company }
+    }
   end
 
   # GET /ticket/1
   def show
-    render json: @ticket
+    render json: {
+      ticket: @ticket,
+      company: @ticket.company
+    }
   end
 
   # POST /ticket
