@@ -16,8 +16,9 @@ Ticket.delete_all
   User.create(
     name: Faker::Name.name,
     phone: Faker::PhoneNumber.cell_phone_in_e164,
+    password: '123456',
     email: Faker::Internet.email,
-    role: rand(1..2),
+    role: rand(0..1),
     birthday: Faker::Date.between_except(from: 100.year.ago, to: 18.year.from_now, excepted: Date.today),
     critical_role: [true, false].sample
   )
