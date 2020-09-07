@@ -12,6 +12,7 @@ Rails.application.routes.draw do
                 registrations: 'users/registrations'
               }
   put '/update_password', to: 'users#update_password'
+  resources :users, except: [:new, :create]
   resources :companies
   resources :tickets
 
