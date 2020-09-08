@@ -3,7 +3,12 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :update, :destroy]
 
   def index
-    @companies = Company.all
+    if params[:user_id]
+      @companies = UserCompany.by_user(params[:user_id])
+      @companies = @companies.map{ |company| company.company }
+    else
+      @companies = Company.all
+    end
 
     render json: @companies
   end
@@ -18,7 +23,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      @company.create_user_company(params[:user_id]) if params[:user_id].present?
+      @company.create_user_company(current_user.id) if current_user.present?
       render json: @company, status: :created, location: @company
     else
       render json: @company.errors, status: :unprocessable_entity
@@ -39,6 +44,14 @@ class CompaniesController < ApplicationController
     @company.destroy
   end
 
+  def total_companies
+    if current_user
+      @companies = Company.by_user(current_user.id)
+      #@ticket = @companies.company
+      render json: @companies
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
@@ -47,6 +60,6 @@ class CompaniesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def company_params
-      params.require(:company).permit(:name, :industry, :address, :phone, :email)
+      params.require(:company).permit(:name, :industry, :address, :phone, :email, :user_id)
     end
 end
