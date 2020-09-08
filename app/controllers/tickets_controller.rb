@@ -48,6 +48,13 @@ class TicketsController < ApplicationController
     @ticket.destroy
   end
 
+  def total_ticket
+    if current_user
+      @tickets = Ticket.by_user(current_user.id).group_by_day_of_week(:updated_at, format: "%a").count
+      render json: @tickets
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket

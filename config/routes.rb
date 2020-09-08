@@ -12,6 +12,9 @@ Rails.application.routes.draw do
                 registrations: 'users/registrations'
               }
   put '/update_password', to: 'users#update_password'
+  get '/total_user_companies', to: 'user_companies#total_company'
+  get '/total_tickets', to: 'tickets#total_ticket'
+  get '/total_companies', to: 'companies#total_companies'
   resources :users, except: [:new, :create]
   resources :companies
   resources :tickets

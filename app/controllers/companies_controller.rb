@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
       @companies = UserCompany.by_user(params[:user_id])
       @companies = @companies.map{ |company| company.company }
     else
-      @tickets = Company.all
+      @companies = Company.all
     end
 
     render json: @companies
@@ -42,6 +42,14 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   def destroy
     @company.destroy
+  end
+
+  def total_companies
+    if current_user
+      @companies = Company.by_user(current_user.id)
+      #@ticket = @companies.company
+      render json: @companies
+    end
   end
 
   private
