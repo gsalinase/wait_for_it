@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'company_configurations/index'
+  get 'company_configurations/show'
+  get 'company_configurations/update'
+  get 'company_configurations/create'
   devise_for :users,
               path: '',
               path_names: {
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
   get '/total_companies', to: 'companies#total_companies'
   resources :users, except: [:new, :create]
   resources :companies
+  resources :company_configurations
   resources :tickets
 
   root 'users#index'
