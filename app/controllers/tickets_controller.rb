@@ -55,6 +55,35 @@ class TicketsController < ApplicationController
     end
   end
 
+  def last_tickets
+    if current_user
+      @tickets = Ticket.by_last_tickets(current_user.id)
+      render json: {
+        tickets: @tickets,
+        companies: @tickets.map{ |ticket| ticket.company }
+      }
+    end
+  end
+
+  def last_tickets
+    if current_user
+      @tickets = Ticket.by_last_tickets(current_user.id)
+      render json: {
+        tickets: @tickets,
+        companies: @tickets.map{ |ticket| ticket.company }
+      }
+    end
+  end
+
+  def call_ticket
+    if current_user
+      @ticket = Ticket.last
+      @ticket.update_attributes(state: 1)
+      UserMailer.with(user: @ticket.user_id).is_time.deliver_now
+      render json: @ticket
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket

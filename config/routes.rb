@@ -16,6 +16,8 @@ Rails.application.routes.draw do
                 registrations: 'users/registrations'
               }
   put '/update_password', to: 'users#update_password'
+  put '/call_ticket', to: 'tickets#call_ticket'
+  get '/last_tickets', to: 'tickets#last_tickets'
   get '/total_user_companies', to: 'user_companies#total_company'
   get '/total_tickets', to: 'tickets#total_ticket'
   get '/total_companies', to: 'companies#total_companies'
